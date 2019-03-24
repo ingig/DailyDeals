@@ -7,3 +7,5 @@
 /DailyDealWeb/obj
 /HeimkaupLib/bin/Debug/netcoreapp2.1
 /HeimkaupLib/obj
+/DailyDealWeb/bin/Release/netcoreapp2.1
+/HeimkaupLib/bin/Release/netcoreapp2.1
