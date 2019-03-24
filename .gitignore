@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/DailyDealWeb/v15
+/DailyDealWeb/bin/Debug/netcoreapp2.1
+/DailyDealWeb/obj

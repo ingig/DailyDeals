@@ -1,0 +1,69 @@
+﻿@page
+@model DailyDealWeb.Pages.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="intro">
+    <h1>Heimkaup tilboð</h1>
+    <p>
+        Heimkaup.is er með 50.000 vörur, svo eitthvað hlýtur að vera á tilboði á hverjum degi.
+    </p>
+
+    @if (Model.SubscribedInfo == null)
+    {
+
+        <div>
+            Skráðu þig á póstlistann of fáðu tilboð send á hverjum degi.
+            <input type="email" name="email" />
+            <input type="submit" value="Senda" />
+        </div>
+    }
+    else
+    {
+        <div class="success">
+            @Model.SubscribedInfo
+        </div>
+    }
+
+    <a target="_blank" href="/share">
+        <img src="~/img/share.gif" />
+    </a>
+</div>
+
+@foreach (var product1 in this.Model.Products)
+{
+    var item = product1;
+    string category = item.Key;
+    var products = item.Value;
+    if (products.Count > 0)
+    {
+        <div class="horizontal-scroll-wrapper">
+            <h2>@category</h2>
+
+            @foreach (var product2 in products)
+            {
+                var product = product2;
+                var discount = product.PriceDetails.Discount;
+                var price = product.PriceDetails.Price;
+                var originalPrice = product.PriceDetails.OriginalPrice;
+                var diff = originalPrice - price;
+
+                <a target="_blank" href="https://www.heimkaup.is/@product.Slug?utm_source=heimkaup_tilbod">
+                    <div class="discount_perc">
+                        @product.PriceDetails.DiscountPercentage% afsl (-@diff.ToString("c"))
+                    </div>
+                    <img src="@product.ImageUrl" /><br />
+                    <div class="name">@product.Name</div>
+                    <div>
+                        <span class="price">@price.ToString("c")</span>
+                        <span class="original">@originalPrice.ToString("c")</span>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+}
+

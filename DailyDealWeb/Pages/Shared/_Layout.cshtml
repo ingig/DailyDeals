@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heimkaup afslættir</title>
+    <meta name="description" content="Sýnir bestu tilboðin á heimkaup.is" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Heimkaups tilboð" />
+    <meta property="og:image" content="https://heimkauptilbod.azurewebsites.net/images/blacklogo.gif" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/"><img src="~/img/logo.gif" /></a>    Tilboð
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+        <footer>
+            <p>
+                &copy; 2019 - Heimkaup tilboð -
+                Þessi síða er ekki á vegum heimkaup.is, heldur notar aðeins
+                <a href="https://www.heimkaup.dev" target="_blank">Heimkaup API</a> til að birta gögnin
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

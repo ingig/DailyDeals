@@ -1,0 +1,73 @@
+﻿body {
+    padding: 0;
+}
+
+nav {
+    background-color: #000;
+    padding: 8px;
+    color: #fff;
+    font-size: 28px;
+}
+
+    nav img {
+        width: 100px;
+    }
+
+.container {
+    width: auto;
+}
+
+.intro {
+    text-align: center;
+}
+
+.horizontal-scroll-wrapper {
+    overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+    .horizontal-scroll-wrapper > a {
+        display: inline-block;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+        position: relative;
+        height:215px;
+        margin-left: 5px;
+        overflow:hidden;
+    }
+
+        .horizontal-scroll-wrapper > a > img {
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: contain;
+        }
+
+
+.discount_perc {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+    position: absolute;
+    top: 0;
+    margin-left:3px;
+}
+
+.name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.original {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.price {
+    font-size: 18px;
+    color: green;
+}
