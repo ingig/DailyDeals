@@ -5,3 +5,5 @@
 /.vs/DailyDealWeb/v15
 /DailyDealWeb/bin/Debug/netcoreapp2.1
 /DailyDealWeb/obj
+/HeimkaupLib/bin/Debug/netcoreapp2.1
+/HeimkaupLib/obj

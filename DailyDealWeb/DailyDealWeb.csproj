@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\HeimkaupLib\HeimkaupLib.csproj" />
+    <ProjectReference Include="..\HeimkaupLib\HeimkaupLib.csproj" />
   </ItemGroup>
 
 </Project>
