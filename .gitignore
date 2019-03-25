@@ -13,3 +13,5 @@
 /DailyDealWeb/bin/Debug/netcoreapp2.2
 /DailyDealWeb/appsettings.json
 /HeimkaupLib/bin/Debug/netcoreapp2.2
+/DailyDealWeb/bin/Release/netcoreapp2.2
+/HeimkaupLib/bin/Release/netcoreapp2.2

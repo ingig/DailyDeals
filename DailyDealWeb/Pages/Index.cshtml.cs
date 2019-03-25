@@ -10,7 +10,7 @@ using System.Linq;
 namespace DailyDealWeb.Pages
 {
 
-    [ValidateAntiForgeryToken]
+    //[ValidateAntiForgeryToken]
     public class IndexModel : PageModel
     {
         public Dictionary<string, List<Product>> Products;
@@ -34,12 +34,12 @@ namespace DailyDealWeb.Pages
         }
 
         [BindProperty]
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        
+
         public void OnPost()
         {
-            if (new Subscriptions().Subscribe(Request.Form["email"]))
+            if (new Subscriptions().Subscribe(Email))
                 SubscribedInfo = "Þú ert núna skráð(ur) á póstlistann.";
 
             OnGet();

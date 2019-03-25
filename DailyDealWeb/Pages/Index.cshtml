@@ -1,7 +1,6 @@
 ﻿@page
 @model DailyDealWeb.Pages.IndexModel
 @{
-    ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -11,25 +10,25 @@
     <p>
         Heimkaup.is er með 50.000 vörur, svo eitthvað hlýtur að vera á tilboði á hverjum degi.
     </p>
+    @*
+        @if (Model.SubscribedInfo == null)
+        {
 
-    @if (Model.SubscribedInfo == null)
-    {
-
-        <div>
-            <form action="/" method="post">
-                Skráðu þig á póstlistann of fáðu tilboð send á hverjum degi.<br />
-                <input type="email" name="email" />
-                <input type="submit" value="Senda" />
-            </form>
-        </div>
-    }
-    else
-    {
-        <div class="success">
-            @Model.SubscribedInfo
-        </div>
-    }
-
+            <div>
+                <form method="post">
+                    Skráðu þig á póstlistann of fáðu tilboð send á hverjum degi.<br />
+                    <input type="email" asp-for="Email" name="Email" />
+                    <input type="submit" value="Senda" />
+                </form>
+            </div>
+        }
+        else
+        {
+            <div class="success">
+                @Model.SubscribedInfo
+            </div>
+        }
+    *@
     <a target="_blank" href="/share">
         <img src="~/img/share.jpg" />
     </a>
