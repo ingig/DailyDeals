@@ -9,3 +9,7 @@
 /HeimkaupLib/obj
 /DailyDealWeb/bin/Release/netcoreapp2.1
 /HeimkaupLib/bin/Release/netcoreapp2.1
+**/azurekeyvault.json
+/DailyDealWeb/bin/Debug/netcoreapp2.2
+/DailyDealWeb/appsettings.json
+/HeimkaupLib/bin/Debug/netcoreapp2.2

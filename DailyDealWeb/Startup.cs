@@ -1,26 +1,33 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Globalization;
 
 namespace DailyDealWeb
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public static string ApiKey;
+        public static string ConnectionString;
+
+        public IConfiguration Configuration { get; }
+        public IHostingEnvironment HostingEnvironment { get; private set; }
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             this.Configuration = configuration;
+            this.HostingEnvironment = env;
+
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
+            ApiKey = configuration["HeimkaupApi"];
+
             CultureInfo cultureInfo = new CultureInfo("is-IS");
             cultureInfo.NumberFormat.CurrencySymbol = "kr.";
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -37,10 +44,10 @@ namespace DailyDealWeb
             {
                 ExceptionHandlerExtensions.UseExceptionHandler(app, "/Error");
                 HstsBuilderExtensions.UseHsts(app);
+
             }
             HttpsPolicyBuilderExtensions.UseHttpsRedirection(app);
             StaticFileExtensions.UseStaticFiles(app);
-            CookiePolicyAppBuilderExtensions.UseCookiePolicy(app);
             MvcApplicationBuilderExtensions.UseMvc(app);
         }
     }

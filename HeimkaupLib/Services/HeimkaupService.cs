@@ -8,6 +8,7 @@ using HeimkaupLib.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net.Http;
 using System.Runtime.Caching;
 using System.Text;
@@ -17,19 +18,27 @@ namespace HeimkaupLib.Service
 {
     public class HeimkaupService : IHeimkaupService
     {
-        private string apiKey = "z94DUnPJK&Qt0MIEq$6VvY2z6qISUVtG^";
+        private string apiKey;
+
+        public HeimkaupService(string apiKey)
+        {
+            this.apiKey = apiKey;
+        }
 
         public List<Filter> GetFilters(List<int> categoryIds, bool exclude)
         {
             List<Filter> filterList = new List<Filter>();
             List<Value> objList = new List<Value>();
             foreach (int categoryId in categoryIds)
+            {
                 objList.Add(new Value()
                 {
                     Exclude = exclude,
                     Type = "int",
                     ValueValue = categoryId.ToString()
                 });
+            }
+
             filterList.Add(new Filter()
             {
                 Name = "category_ids",
@@ -76,7 +85,7 @@ namespace HeimkaupLib.Service
                     Filters = GetFilters(categoryIds, exclude)
                 }), Encoding.UTF8, "application/json");
 
-                client.DefaultRequestHeaders.Add("api-key", this.apiKey);
+                client.DefaultRequestHeaders.Add("api-key", apiKey);
                 using (HttpContent responseContent = client.PostAsync(requestUri, stringContent).Result.Content)
                     searchResponse = JsonConvert.DeserializeObject<SearchResponse>(await responseContent.ReadAsStringAsync());
             }
@@ -89,7 +98,7 @@ namespace HeimkaupLib.Service
             CategoryResponse categoryResponse = null;
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("api-key", this.apiKey);
+                client.DefaultRequestHeaders.Add("api-key", apiKey);
                 using (HttpContent responseContent = client.GetAsync(requestUri).Result.Content)
                     categoryResponse = JsonConvert.DeserializeObject<CategoryResponse>(await responseContent.ReadAsStringAsync());
             }

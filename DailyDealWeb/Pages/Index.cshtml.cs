@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace DailyDealWeb.Pages
 {
+
+    [ValidateAntiForgeryToken]
     public class IndexModel : PageModel
     {
         public Dictionary<string, List<Product>> Products;
@@ -16,7 +18,7 @@ namespace DailyDealWeb.Pages
 
         public void OnGet()
         {
-            Dictionary<string, SearchResponse> result = new HeimkaupService().GetAllByCategory().Result;
+            Dictionary<string, SearchResponse> result = new HeimkaupService(Startup.ApiKey).GetAllByCategory().Result;
             Products = new Dictionary<string, List<Product>>();
             foreach (KeyValuePair<string, SearchResponse> keyValuePair in result)
             {
@@ -31,8 +33,10 @@ namespace DailyDealWeb.Pages
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [BindProperty]
+        public string email { get; set; }
+
+        
         public void OnPost()
         {
             if (new Subscriptions().Subscribe(Request.Form["email"]))
